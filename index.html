@@ -1,1 +1,185 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-sobre: #b5935a; /* Dorado mate */
+            --color-papel: #ffffff;
+            --sombra: rgba(0, 0, 0, 0.2);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .wrapper {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            perspective: 1000px;
+        }
+
+        /* EL SOBRE */
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-sobre);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 15px 35px var(--sombra);
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        /* SOLAPA (Parte que se abre) */
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 180px solid var(--color-sobre); /* Triángulo */
+            border-bottom: 100px solid transparent;
+            z-index: 3;
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+        }
+
+        /* LA CARTA (Papel dentro) */
+        .letter {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 300px;
+            height: 380px;
+            background-color: var(--color-papel);
+            z-index: 2;
+            transition: transform 0.6s ease-in-out;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .letter h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--color-sobre);
+        }
+
+        .letter p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+
+        /* CUERPO DEL SOBRE (Bolsillo) */
+        .pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background-color: var(--color-sobre);
+            z-index: 3;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ESTADO ABIERTO */
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1; /* Pasa atrás de la carta */
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-120px); /* El papel sube */
+            z-index: 2;
+        }
+
+        /* Indicador de click */
+        .tap-hint {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper" data-aos="fade-up">
+        
+        <div class="envelope" id="invitation">
+            <div class="flap"></div>
+            
+            <div class="letter">
+                <h1>Nuestra Boda</h1>
+                <p>Estás cordialmente invitado a celebrar el inicio de nuestra historia.</p>
+                <p><strong>Mariana & Alejandro</strong></p>
+                <p style="font-size: 0.8rem;">26.12.2026</p>
+            </div>
+            
+            <div class="pocket"></div>
+        </div>
+
+        <div class="tap-hint">Haz clic para abrir</div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Animación de entrada y salida al scroll
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 100
+        });
+
+        // Lógica de apertura
+        const inv = document.getElementById('invitation');
+        inv.addEventListener('click', () => {
+            inv.classList.toggle('open');
+        });
+
+        // Refrescar para Google Sites
+        window.addEventListener('load', () => {
+            setTimeout(() => { AOS.refresh(); }, 200);
+        });
+    </script>
+
+</body>
+</html>
