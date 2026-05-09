@@ -30,6 +30,8 @@ body, html {
     align-items: center;
     z-index: 1000;
     transition: opacity 0.8s ease, visibility 0.8s;
+    background-color: #ebe7de; /* Un tono un poco más oscuro que el fondo para que el sobre blanco resalte */
+    /* ... resto del código igual ... */
 }
 
 /* Contenedor principal del sobre */
@@ -40,6 +42,12 @@ body, html {
     aspect-ratio: 3 / 2.2; /* Proporción similar a la foto */
     cursor: pointer;
     perspective: 1000px;
+    /* Añadimos una sombra proyectada (drop-shadow) más profunda */
+    filter: drop-shadow(0 30px 50px rgba(0,0,0,0.25));
+    transition: transform 0.4s ease; /* Para el efecto de hover */
+    /* Efecto: El sobre se acerca un poco cuando pasas el ratón (o al tocar) */
+.envelope:hover {
+    transform: scale(1.03);
 }
 
 /* Base del sobre (Papel con Textura y Sombra) */
