@@ -42,11 +42,14 @@ html, body {
     padding: 80px 20px; /* Espacio para que respiren los elementos */
     box-sizing: border-box;
     gap: 60px; /* Espacio uniforme entre cada bloque */
+    
+    opacity: 0;
 }
 
 /* Cuando se activa la invitación */
 #seccion-contenido.show {
     display: flex; /* Cambia de none a flex */
+      opacity: 1;
 }
 
 /* Ajuste de los bloques hijos */
