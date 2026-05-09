@@ -80,7 +80,7 @@ body, html {
     transform: translate(-50%, -50%);
     width: 80px; /* Tamaño del sello */
     height: 80px;
-    background-image: url('img/sellos.png'); /* !!! TU IMAGEN DE SELLO !!! */
+    background-image: url('img/sello1.png'); /* !!! TU IMAGEN DE SELLO !!! */
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 4; /* Por encima de la solapa */
