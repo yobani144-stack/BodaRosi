@@ -46,21 +46,27 @@
             const sobre = document.getElementById('seccion-sobre');
             const contenido = document.getElementById('seccion-contenido');
 
-            // 1. Inicia la animación visual del sobre
-            sobre.classList.add('open');
+            
+            // 1. Gira la solapa
+            document.querySelector('.flap').style.transform = "rotateX(180deg)";
 
-            // 2. Espera a que termine la animación para cambiar de sección
-            setTimeout(() => {
-                sobre.style.display = 'none'; // Quita el sobre del camino
-                contenido.classList.add('show'); // Muestra la invitación
-                
-                // Habilitamos el scroll para que el invitado pueda bajar
-                document.body.style.overflowY = "auto";
-                
-                // Refrescamos las animaciones de las tarjetas y fotos
-                AOS.init(); 
-                AOS.refresh();
-            }, 1200);
+            
+            // 2. Espera un poco y haz la transición
+    setTimeout(() => {
+        sobre.style.opacity = "0";
+        
+        setTimeout(() => {
+            sobre.style.display = "none";
+            contenido.style.display = "flex";
+            
+            // Forzar que la pantalla suba al inicio
+            window.scrollTo(0, 0);
+            
+            // Habilitar scroll y animaciones
+            document.body.style.overflowY = "auto";
+            AOS.refresh();
+        }, 600);
+    }, 800);
         }
 
         // Bloqueo inicial: Para que no puedan bajar sin abrir el sobre
