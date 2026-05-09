@@ -101,7 +101,8 @@ const musicBtn = document.getElementById("music-control");
     musica.play().then(() => {
         musicBtn.classList.add("playing");
     }).catch(err => console.log("Autoplay bloqueado, el usuario debe usar el botón"));
-            
+
+           
             // 2. Transición a la invitación
                 setTimeout(() => {
         document.getElementById('pantalla-inicio').style.opacity = '0';
@@ -128,6 +129,7 @@ const musicBtn = document.getElementById("music-control");
         window.onload = () => {
             document.body.style.overflowY = "hidden";
         };
+        
     </script>
     <script>
         // CONFIGURA TU FECHA AQUÍ (Formato: Mes Día, Año Hora:Min:Seg)
