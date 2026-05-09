@@ -84,6 +84,19 @@
         musicBtn.classList.remove("playing");
     }
 }
+        // Función para pausar y reanudar
+function toggleMusic(event) {
+    // Evita que el clic se propague al sobre o al fondo
+    if(event) event.stopPropagation();
+    
+    if (musica.paused) {
+        musica.play();
+        musicBtn.classList.add("playing"); // Activa las barras animadas
+    } else {
+        musica.pause();
+        musicBtn.classList.remove("playing"); // Detiene las barras animadas
+    }
+}
         function iniciarApertura() {
             const sobre = document.getElementById('miSobre');
             const inicio = document.getElementById('pantalla-inicio');
