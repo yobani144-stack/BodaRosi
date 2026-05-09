@@ -148,3 +148,74 @@ body, html {
     font-size: 4rem;
     color: var(--color-sobre);
 }
+
+
+/* Contenedor del botón para centrarlo */
+.boton-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Diseño del Botón */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    position: relative;
+    overflow: hidden; /* Necesario para el efecto de brillo */
+    transition: all 0.3s ease;
+}
+
+/* Icono de WhatsApp */
+.btn-whatsapp i {
+    font-size: 1.5rem;
+}
+
+/* EFECTO 1: Pulso sutil constante */
+.btn-whatsapp {
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* EFECTO 2: Brillo que cruza el botón */
+.btn-whatsapp::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: none;
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
+
+/* Efecto al poner el mouse o tocar */
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    filter: brightness(1.1);
+}
