@@ -183,5 +183,12 @@ const interval = setInterval(function() {
         cardElement.classList.toggle('flipped');
         }
     </script>
+    <script>
+        fetch('novios.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('seccion-novios-contenedor').innerHTML = data;
+    });
+    </script>
 </body>
 </html>
