@@ -3,253 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Invitación</title>
-
+    <title>Boda - Invitación Interactiva</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        :root {
-            --dorado: #b5935a;
-            --crema: #fdfcfb;
-            --rosa-palo: #f4dcd6;
-            --texto: #5a4a42;
-        }
-
-        /* --- RESET Y BASE --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--crema);
-            font-family: 'Montserrat', sans-serif;
-            color: var(--texto);
-            overflow-x: hidden;
-        }
-
-        /* --- PANTALLA DEL SOBRE --- */
-        #seccion-sobre {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--crema);
-            z-index: 1000;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .envelope-wrapper {
-            position: relative;
-            width: 320px;
-            height: 220px;
-            background-color: var(--dorado);
-            cursor: pointer;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .flap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-top: 130px solid var(--dorado);
-            z-index: 3;
-            transform-origin: top;
-            transition: transform 0.7s ease;
-        }
-
-        .pocket {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dorado);
-            z-index: 4;
-            clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .letter-preview {
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            width: 90%;
-            height: 90%;
-            background: white;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.7s ease;
-        }
-
-        /* ESTADO ABIERTO */
-        .open .flap { transform: rotateX(180deg); z-index: 1; }
-        .open .letter-preview { transform: translateY(-100px); }
-
-        /* --- SECCIÓN DE CONTENIDO --- */
-        #seccion-contenido {
-            display: none; /* Se activa con JS */
-            flex-direction: column;
-            align-items: center;
-            padding: 80px 20px;
-            gap: 60px;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .show-content {
-            display: flex !important;
-            opacity: 1 !important;
-        }
-
-        /* --- COMPONENTES --- */
-        .invitation-header h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--dorado);
-            margin: 0;
-        }
-
-        /* Tarjeta Novia */
-        .card-novia {
-            width: 300px;
-            height: 400px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .card-novia.flipped .card-inner { transform: rotateY(180deg); }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .card-front img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--rosa-palo);
-            margin-bottom: 20px;
-        }
-
-        .card-back { transform: rotateY(180deg); background: var(--rosa-palo); }
-
-        /* Botón WhatsApp */
-        .btn-ws {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
-            transition: 0.3s;
-        }
-        .btn-ws:hover { transform: scale(1.05); }
-
-    </style>
 </head>
-<body>
+<body class="bloqueado">
 
-    <section id="seccion-sobre">
-        <div class="envelope-wrapper" id="envelope" onclick="abrirTodo()">
+    <section id="pantalla-inicio">
+        <div class="envelope" id="miSobre" onclick="iniciarApertura()">
             <div class="flap"></div>
-            <div class="letter-preview">
-                <p style="font-weight: 600;">Tocar para abrir</p>
+            <div style="position: absolute; width:100%; height:100%; display:flex; justify:center; align-items:center; color:white; font-size: 0.8rem; letter-spacing:2px;">
+                TOCAR PARA ABRIR
             </div>
-            <div class="pocket"></div>
         </div>
     </section>
 
-    <section id="seccion-contenido">
+    <main id="invitacion-real">
         
-        <div class="invitation-header" data-aos="fade-up">
-            <h1>Mariana & Alejandro</h1>
-            <p style="letter-spacing: 3px;">¡NOS CASAMOS!</p>
-        </div>
+        <section class="bloque" data-aos="fade-up">
+            <h1>Nombre & Nombre</h1>
+            <p>¡NOS CASAMOS!</p>
+        </section>
 
-        <div class="card-novia" data-aos="zoom-in" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=400" alt="Novia">
-                    <h2 style="font-family: 'Great Vibes';">Mariana Rodríguez</h2>
-                    <p style="font-size: 0.8rem; color: var(--dorado);">LA NOVIA</p>
-                </div>
-                <div class="card-back">
-                    <h3 style="font-family: 'Great Vibes';">Gracias</h3>
-                    <p style="font-size: 0.9rem; text-align: center;">Por ser parte de este día tan especial.</p>
-                </div>
-            </div>
-        </div>
-
-        <div data-aos="fade-up">
-            <a href="https://wa.me/521234567890" class="btn-ws">
-                <i class="fab fa-whatsapp"></i> Confirmar Asistencia
-            </a>
-        </div>
-
-    </section>
+        </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        function abrirTodo() {
-            const envelope = document.getElementById('envelope');
-            const sobreSeccion = document.getElementById('seccion-sobre');
-            const contenido = document.getElementById('seccion-contenido');
+        function iniciarApertura() {
+            const sobre = document.getElementById('miSobre');
+            const inicio = document.getElementById('pantalla-inicio');
+            const invitacion = document.getElementById('invitacion-real');
 
-            // Abrir sobre
-            envelope.classList.add('open');
+            // 1. Efecto visual de apertura
+            sobre.classList.add('open');
 
-            // Desvanecer y mostrar contenido
+            // 2. Transición a la invitación
             setTimeout(() => {
-                sobreSeccion.style.opacity = '0';
+                inicio.style.opacity = '0';
                 setTimeout(() => {
-                    sobreSeccion.style.display = 'none';
-                    contenido.classList.add('show-content');
+                    inicio.style.display = 'none';
+                    invitacion.style.display = 'flex';
                     
-                    // Iniciar animaciones de scroll
-                    AOS.init({ duration: 1000, mirror: true });
-                    document.body.style.overflowY = "auto";
+                    // Pequeño delay para el fade in de la invitación
+                    setTimeout(() => {
+                        invitacion.style.opacity = '1';
+                        AOS.init({ duration: 1000, mirror: true });
+                        document.body.style.overflowY = "auto";
+                    }, 100);
                 }, 800);
-            }, 1000);
+            }, 800);
         }
 
         // Bloqueo inicial
         window.onload = () => {
-            document.body.style.overflow = "hidden";
+            document.body.style.overflowY = "hidden";
         };
     </script>
 </body>
