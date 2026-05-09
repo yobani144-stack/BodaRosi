@@ -33,7 +33,28 @@
             <p style="letter-spacing: 4px; font-weight: 300;">¡NOS CASAMOS!</p>
         </section>
 
-        </main>
+        <section class="bloque" data-aos="fade-up">
+    <h2 class="titulo-contador">Faltan tan solo...</h2>
+    <div id="countdown">
+        <div class="tiempo">
+            <span id="days">00</span>
+            <small>Días</small>
+        </div>
+        <div class="tiempo">
+            <span id="hours">00</span>
+            <small>Horas</small>
+        </div>
+        <div class="tiempo">
+            <span id="minutes">00</span>
+            <small>Minutos</small>
+        </div>
+        <div class="tiempo">
+            <span id="seconds">00</span>
+            <small>Segundos</small>
+        </div>
+    </div>
+</section>
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -67,6 +88,33 @@
         window.onload = () => {
             document.body.style.overflowY = "hidden";
         };
+    </script>
+    <script>
+        // CONFIGURA TU FECHA AQUÍ (Formato: Mes Día, Año Hora:Min:Seg)
+const fechaBoda = new Date("Dec 26, 2026 15:00:00").getTime();
+
+const interval = setInterval(function() {
+    const ahora = new Date().getTime();
+    const distancia = fechaBoda - ahora;
+
+    // Cálculos de tiempo
+    const d = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Inyectar en el HTML
+    document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+    document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+    document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+    document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+
+    // Si la fecha ya pasó
+    if (distancia < 0) {
+        clearInterval(interval);
+        document.getElementById("countdown").innerHTML = "<h3>¡Llegó el gran día!</h3>";
+    }
+}, 1000);
     </script>
 </body>
 </html>
