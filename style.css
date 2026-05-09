@@ -219,3 +219,140 @@ body, html {
     box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
     filter: brightness(1.1);
 }
+
+
+/* targeta novia */
+
+/* Configuración de fuentes y base */
+:root {
+    --color-novia: #f4dcd6; /* Rosa suave */
+    --color-texto: #5a4a42;
+    --oro: #b5935a;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+/* CONTENEDOR CON PERSPECTIVA */
+.card-perspective {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* LA TARJETA QUE GIRA */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Clase para activar el giro */
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* CARAS DE LA TARJETA */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+/* --- CARA FRONTAL --- */
+.card-front {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.photo-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--color-novia);
+    margin-top: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-front h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.card-front p {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: var(--oro);
+    margin-top: 10px;
+}
+
+/* --- CARA TRASERA --- */
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #fff 0%, var(--color-novia) 100%);
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.card-back i {
+    font-size: 2rem;
+    color: var(--oro);
+    margin-bottom: 20px;
+}
+
+.card-back h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: var(--color-texto);
+    margin: 0;
+}
+
+.card-back p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.signature {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+
+
+
