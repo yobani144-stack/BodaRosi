@@ -3,53 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda</title>
-
+    <title>Invitación Especial</title>
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="wrapper" data-aos="fade-up">
-        
-        <div class="envelope" id="invitation">
+    <section id="seccion-sobre">
+        <div class="wrapper-sobre" onclick="abrirInvitacion()">
             <div class="flap"></div>
-            
-            <div class="letter">
-                <h1>Nuestra Boda</h1>
-                <p>Estás cordialmente invitado a celebrar el inicio de nuestra historia.</p>
-                <p><strong>Mariana & Alejandro</strong></p>
-                <p style="font-size: 0.8rem;">26.12.2026</p>
+            <div class="letter-preview">
+                <h2>Abrir invitación</h2>
             </div>
-            
             <div class="pocket"></div>
         </div>
+    </section>
 
-        <div class="tap-hint">Haz clic para abrir</div>
-    </div>
+    <section id="seccion-contenido">
+        <div class="invitation-main">
+            <h1>Mariana & Alejandro</h1>
+            <p>Junto a nuestras familias, tenemos el honor de invitarles a celebrar nuestra unión matrimonial.</p>
+            <hr style="width: 50px; border: 1px solid #b5935a; margin: 30px auto;">
+            <h3>26 de Diciembre, 2026</h3>
+            <p>18:00 Horas</p>
+            <p>Hacienda Los Ángeles, Ciudad de México</p>
+            <button onclick="window.scrollTo({top: 1000, behavior: 'smooth'})" style="margin-top:20px; background:#b5935a; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
+                Ver Ubicación
+            </button>
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar animaciones AOS
-        AOS.init({
-            duration: 1000,
-            once: false,
-            mirror: true,
-            offset: 100
-        });
+        function abrirInvitacion() {
+            const sobreSeccion = document.getElementById('seccion-sobre');
+            const contenidoSeccion = document.getElementById('seccion-contenido');
 
-        // Lógica para abrir/cerrar el sobre al hacer clic
-        const inv = document.getElementById('invitation');
-        inv.addEventListener('click', () => {
-            inv.classList.toggle('open');
-        });
+            // 1. Activar animación de apertura del sobre
+            sobreSeccion.classList.add('open');
 
-        // Refrescar AOS para asegurar compatibilidad con Google Sites
-        window.addEventListener('load', () => {
-            setTimeout(() => { AOS.refresh(); }, 200);
-        });
+            // 2. Esperar a que la carta suba y luego desvanecer el sobre
+            setTimeout(() => {
+                sobreSeccion.classList.add('hidden');
+                contenidoSeccion.classList.add('show');
+                // Habilitar el scroll de la página una vez abierta
+                document.body.style.overflow = 'auto';
+            }, 1200);
+        }
+
+        // Bloquear scroll al inicio hasta que se abra el sobre
+        window.onload = () => {
+            document.body.style.overflow = 'hidden';
+        }
     </script>
 </body>
 </html>
