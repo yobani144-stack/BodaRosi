@@ -32,6 +32,10 @@ body, html {
     transition: opacity 0.8s ease, visibility 0.8s;
     background-color: #ebe7de; /* Un tono un poco más oscuro que el fondo para que el sobre blanco resalte */
     /* ... resto del código igual ... */
+
+    background: radial-gradient(circle, #fdfcfb 0%, #dcd7c9 100%);
+    
+
 }
 
 /* Contenedor principal del sobre */
@@ -48,6 +52,31 @@ body, html {
     /* Efecto: El sobre se acerca un poco cuando pasas el ratón (o al tocar) */
 .envelope:hover {
     transform: scale(1.03);
+
+    box-shadow: 0 40px 80px rgba(0,0,0,0.2), 
+                0 10px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.5); /* Un borde casi invisible que brilla */
+    overflow: visible; /* Importante para que las sombras no se corten */
+
+    animation: entradaSobre 1.5s ease-out forwards, flotar 3s ease-in-out infinite 1.5s;
+    opacity: 0;
+}
+
+@keyframes entradaSobre {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg) translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
 }
 
 /* Base del sobre (Papel con Textura y Sombra) */
@@ -86,19 +115,20 @@ body, html {
     top: 50%; /* Centrado donde se unen las solapas */
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80px; /* Tamaño del sello */
-    height: 80px;
+    width: 90px; /* Tamaño del sello */
+    height: 90px;
     background-image: url('img/sello1.png'); /* !!! TU IMAGEN DE SELLO !!! */
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 4; /* Por encima de la solapa */
     transition: all 0.6s ease;
     filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); /* Sombra realista al sello */
-    /* Añadimos un brillo sutil */
-    box-shadow: inset -3px -3px 5px rgba(0,0,0,0.3), 
-                inset 3px 3px 5px rgba(255,255,255,0.2);
-    /* Una sombra proyectada más marcada para el sello */
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
+   
+    background-color: transparent !important; /* QUITA EL RECUADRO */
+    z-index: 10;
+    /* Sombra proyectada que sigue la forma del sello, no un cuadro */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4)); 
+    transition: all 0.5s ease;
 }
 
 /* Texto indicativo suave */
