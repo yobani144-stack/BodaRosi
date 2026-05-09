@@ -47,7 +47,7 @@ body, html {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('textura-papel.jpg'); /* !!! TU IMAGEN DE TEXTURA !!! */
+    background-image: url('textura.jpg'); /* !!! TU IMAGEN DE TEXTURA !!! */
     background-size: cover;
     border-radius: 5px; /* Bordes ligeramente suaves */
     box-shadow: 0 25px 60px rgba(0,0,0,0.15); /* Sombra suave y difuminada */
@@ -61,7 +61,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('textura-papel.jpg'); /* !!! MISMA TEXTURA !!! */
+    background-image: url('textura.jpg'); /* !!! MISMA TEXTURA !!! */
     background-size: cover;
     /* clip-path orgánico: simula el doblez de la foto */
     clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%);
@@ -80,7 +80,7 @@ body, html {
     transform: translate(-50%, -50%);
     width: 80px; /* Tamaño del sello */
     height: 80px;
-    background-image: url('sello-lacre.png'); /* !!! TU IMAGEN DE SELLO !!! */
+    background-image: url('sello.png'); /* !!! TU IMAGEN DE SELLO !!! */
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 4; /* Por encima de la solapa */
@@ -122,7 +122,7 @@ body, html {
     gap: 80px;
     transition: opacity 1s ease;
     /* Fondo premium para la invitación real */
-    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('fondo-boda.jpg');
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('fondo.jpg');
     background-size: cover;
     background-attachment: fixed;
 }
