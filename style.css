@@ -20,22 +20,59 @@ body, html {
 
 /* --- SECCIÓN 1: EL SOBRE REALISTA --- */
 #pantalla-inicio {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 100vh;
+    /* Fondo inspirado en la imagen: tonos crema, oro y desenfoque */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    transition: opacity 0.8s ease, visibility 0.8s;
-    background-color: #ebe7de; /* Un tono un poco más oscuro que el fondo para que el sobre blanco resalte */
-    /* ... resto del código igual ... */
+    overflow: hidden;
+    perspective: 1000px;
+}
 
-    background: radial-gradient(circle, #fdfcfb 0%, #dcd7c9 100%);
-    
+/* Efecto de partículas de luz (Luces de Boda) */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveParticles 20s linear infinite;
+    pointer-events: none;
+}
 
+@keyframes moveParticles {
+    from { transform: translateY(0); }
+    to { transform: translateY(-500px); }
+}
+
+/* Ajuste del Sobre para que sea el Rey de la pantalla */
+.envelope {
+    z-index: 5;
+    /* Sombra muy profunda para despegarlo del fondo */
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+    animation: flotarSobre 4s ease-in-out infinite;
+}
+
+@keyframes flotarSobre {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+/* Estilo elegante para el texto */
+.click-to-open {
+    font-family: 'Playfair Display', serif; /* O una fuente elegante que tengas */
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-top: 20px;
 }
 
 /* Contenedor principal del sobre */
