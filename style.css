@@ -5,19 +5,20 @@
     --fondo-invitacion: #fdfcfb;
 }
 
-body, html {
+/* 1. Base del documento */
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    background-color: var(--fondo-invitacion);
+    background-color: #fdfcfb; /* Color de fondo general */
+    /* Permitimos el scroll solo cuando el sobre se oculte */
+    overflow-x: hidden; 
 }
 
-/* --- SECCIÓN 1: EL SOBRE (PANTALLA COMPLETA) --- */
+/* 2. Sección del Sobre (Cubre toda la pantalla al inicio) */
 #seccion-sobre {
-    position: fixed;
+    position: fixed; /* Siempre fijo arriba hasta que desaparezca */
     top: 0;
     left: 0;
     width: 100%;
@@ -25,139 +26,36 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    background-color: var(--fondo-invitacion);
-    transition: opacity 1s ease, visibility 1s;
+    z-index: 1000; /* Por encima de todo */
+    background-color: #fdfcfb;
+    transition: opacity 0.8s ease, visibility 0.8s;
 }
 
-.wrapper-sobre {
-    position: relative;
-    width: 90vw;
-    max-width: 450px;
-    height: 300px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.envelope {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-sobre);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
-
-.flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 45vw solid transparent;
-    border-right: 45vw solid transparent;
-    border-top: 150px solid var(--color-sobre);
-    z-index: 3;
-    transform-origin: top;
-    transition: transform 0.6s ease-in-out;
-}
-
-/* Ajuste de solapa para PC */
-@media (min-width: 500px) {
-    .flap {
-        border-left: 225px solid transparent;
-        border-right: 225px solid transparent;
-    }
-}
-
-.pocket {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-sobre);
-    z-index: 4;
-    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Carta asomándose */
-.letter-preview {
-    position: absolute;
-    top: 10px;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    background-color: white;
-    z-index: 2;
-    transition: transform 0.8s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.letter-preview h2 {
-    font-family: 'Great Vibes', cursive;
-    color: var(--color-sobre);
-    font-size: 1.8rem;
-}
-
-/* EFECTO ABIERTO */
-#seccion-sobre.open .flap {
-    transform: rotateX(180deg);
-}
-
-#seccion-sobre.open .letter-preview {
-    transform: translateY(-150px);
-}
-
-/* Desvanecer sección del sobre */
-#seccion-sobre.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-/* --- SECCIÓN 2: CONTENIDO DE LA INVITACIÓN --- */
+/* 3. Sección de Contenido (El pergamino de la invitación) */
 #seccion-contenido {
-    padding: 50px 20px;
+    display: none; /* Oculto inicialmente */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea al inicio (arriba) */
+    width: 100%;
     min-height: 100vh;
+    padding: 80px 20px; /* Espacio para que respiren los elementos */
+    box-sizing: border-box;
+    gap: 60px; /* Espacio uniforme entre cada bloque */
+}
+
+/* Cuando se activa la invitación */
+#seccion-contenido.show {
+    display: flex; /* Cambia de none a flex */
+}
+
+/* Ajuste de los bloques hijos */
+.invitation-main, .card-perspective, .boton-container {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho para que se vea bien en PC y móvil */
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
-
-    flex-direction: column; /* Alinea los elementos en vertical */
-    align-items: center;    /* Centra los elementos horizontalmente */
-    gap: 50px;             /* Añade espacio de 50px entre cada bloque de contenido */
-    
-    min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    
-   
-   
-}
-
-#seccion-contenido.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.invitation-main {
-    max-width: 600px;
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.invitation-main h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4rem;
-    color: var(--color-sobre);
 }
 
 
