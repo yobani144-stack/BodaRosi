@@ -60,16 +60,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        function iniciarApertura() {
-            const sobre = document.getElementById('miSobre');
-            const inicio = document.getElementById('pantalla-inicio');
-            const invitacion = document.getElementById('invitacion-real');
-
-            const musica = document.getElementById("musicaBoda");
-const musicIcon = document.getElementById("music-icon");
-const musicBtn = document.getElementById("music-control");
-
-           function toggleMusic(event) {
+        function toggleMusic(event) {
     // Evitamos que el clic en el botón active el sobre por error
     if(event) event.stopPropagation();
     
@@ -81,24 +72,24 @@ const musicBtn = document.getElementById("music-control");
         musicBtn.classList.remove("playing");
     }
 }
-            function abrirInvitacion() {
-    const sobre = document.getElementById('miSobre');
-    
-    // Abrir sobre
-    sobre.classList.add('open');
+        function iniciarApertura() {
+            const sobre = document.getElementById('miSobre');
+            const inicio = document.getElementById('pantalla-inicio');
+            const invitacion = document.getElementById('invitacion-real');
 
-    // Autoplay: Intentar reproducir música al hacer clic en el sobre
-    musica.play().then(() => {
-        musicIcon.innerText = "Ⅱ";
-        musicBtn.classList.add("music-playing");
-    }).catch(error => {
-        console.log("El navegador bloqueó el autoplay, el usuario deberá usar el botón.");
-    });
-            }
+            const musica = document.getElementById("musicaBoda");
+const musicIcon = document.getElementById("music-icon");
+const musicBtn = document.getElementById("music-control");
+
                 
             // 1. Efecto visual de apertura (gira solapa, quita sello)
             sobre.classList.add('open');
-
+            
+// 2. Iniciamos la música al hacer clic
+    musica.play().then(() => {
+        musicBtn.classList.add("playing");
+    }).catch(err => console.log("Autoplay bloqueado, el usuario debe usar el botón"));
+            
             // 2. Transición a la invitación
                 setTimeout(() => {
         document.getElementById('pantalla-inicio').style.opacity = '0';
