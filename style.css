@@ -112,7 +112,7 @@ body, html {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('img/textura2.jpeg'); /* !!! TU IMAGEN DE TEXTURA !!! */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* !!! TU IMAGEN DE TEXTURA !!! */
     background-size: cover;
     border-radius: 5px; /* Bordes ligeramente suaves */
     box-shadow: 0 25px 60px rgba(0,0,0,0.15); /* Sombra suave y difuminada */
@@ -126,7 +126,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/textura2.jpeg'); /* !!! MISMA TEXTURA !!! */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* !!! TU IMAGEN DE TEXTURA !!! */
     background-size: cover;
     /* clip-path orgánico: simula el doblez de la foto */
     clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%);
