@@ -69,18 +69,18 @@
 const musicIcon = document.getElementById("music-icon");
 const musicBtn = document.getElementById("music-control");
 
-            function toggleMusic() {
+           function toggleMusic(event) {
+    // Evitamos que el clic en el botón active el sobre por error
+    if(event) event.stopPropagation();
+    
     if (musica.paused) {
         musica.play();
-        musicIcon.innerText = "Ⅱ"; // Símbolo de pausa
-        musicBtn.classList.add("music-playing");
+        musicBtn.classList.add("playing");
     } else {
         musica.pause();
-        musicIcon.innerText = "⏵"; // Símbolo de play
-        musicBtn.classList.remove("music-playing");
+        musicBtn.classList.remove("playing");
     }
 }
-
             function abrirInvitacion() {
     const sobre = document.getElementById('miSobre');
     
@@ -94,7 +94,7 @@ const musicBtn = document.getElementById("music-control");
     }).catch(error => {
         console.log("El navegador bloqueó el autoplay, el usuario deberá usar el botón.");
     });
-
+            }
                 
             // 1. Efecto visual de apertura (gira solapa, quita sello)
             sobre.classList.add('open');
