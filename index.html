@@ -12,7 +12,18 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+        
+        <div id="music-control" onclick="toggleMusic(event)">
+    <div id="music-bar-container">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</div>
 
+<audio id="musicaBoda" loop>
+    <source src="cancion.mp3" type="audio/mpeg">
+</audio>
     <section id="pantalla-inicio">
         <div class="particles"></div>
         <div class="envelope" id="miSobre" onclick="iniciarApertura()">
