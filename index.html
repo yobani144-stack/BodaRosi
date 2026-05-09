@@ -65,10 +65,45 @@
             const inicio = document.getElementById('pantalla-inicio');
             const invitacion = document.getElementById('invitacion-real');
 
+            const musica = document.getElementById("musicaBoda");
+const musicIcon = document.getElementById("music-icon");
+const musicBtn = document.getElementById("music-control");
+
+            function toggleMusic() {
+    if (musica.paused) {
+        musica.play();
+        musicIcon.innerText = "Ⅱ"; // Símbolo de pausa
+        musicBtn.classList.add("music-playing");
+    } else {
+        musica.pause();
+        musicIcon.innerText = "⏵"; // Símbolo de play
+        musicBtn.classList.remove("music-playing");
+    }
+}
+
+            function abrirInvitacion() {
+    const sobre = document.getElementById('miSobre');
+    
+    // Abrir sobre
+    sobre.classList.add('open');
+
+    // Autoplay: Intentar reproducir música al hacer clic en el sobre
+    musica.play().then(() => {
+        musicIcon.innerText = "Ⅱ";
+        musicBtn.classList.add("music-playing");
+    }).catch(error => {
+        console.log("El navegador bloqueó el autoplay, el usuario deberá usar el botón.");
+    });
+
+                
             // 1. Efecto visual de apertura (gira solapa, quita sello)
             sobre.classList.add('open');
 
             // 2. Transición a la invitación
+                setTimeout(() => {
+        document.getElementById('pantalla-inicio').style.opacity = '0';
+        // ... resto del código
+    }, 2000);
             setTimeout(() => {
                 inicio.style.opacity = '0';
                 setTimeout(() => {
