@@ -4,7 +4,7 @@
 
 #seccion-novios {
     padding: 80px 20px;
-    background: radial-gradient(circle, rgba(253,252,251,0.7) 0%, rgba(220,215,201,0.5) 100%);
+   /* background: radial-gradient(circle, rgba(253,252,251,0.7) 0%, rgba(220,215,201,0.5) 100%); */
     text-align: center;
     perspective: 1500px; /* Profundidad para el efecto 3D */
     overflow: hidden;
