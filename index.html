@@ -15,85 +15,61 @@
 <body>
 
     <section id="seccion-sobre">
-        <div class="wrapper-sobre" onclick="abrirInvitacion()">
-            <div class="flap"></div>
-            <div class="letter-preview">
-                <h2>Abrir invitación</h2>
-            </div>
-            <div class="pocket"></div>
-        </div>
-    </section>
+    <div class="wrapper-sobre" onclick="abrirInvitacion()">
+        <div class="flap"></div>
+        <div class="letter-preview"><h2>Tocar para abrir</h2></div>
+        <div class="pocket"></div>
+    </div>
+</section>
 
-    <section id="seccion-contenido">
-    
-    <div class="invitation-main">
+<section id="seccion-contenido">
+
+    <div class="invitation-main" data-aos="fade-up">
         <h1>Mariana & Alejandro</h1>
-            <p>Junto a nuestras familias, tenemos el honor de invitarles a celebrar nuestra unión matrimonial.</p>
-            <hr style="width: 50px; border: 1px solid #b5935a; margin: 30px auto;">
-            <h3>26 de Diciembre, 2026</h3>
-            <p>18:00 Horas</p>
-            <p>Hacienda Los Ángeles, Ciudad de México</p>
-            <button onclick="window.scrollTo({top: 1000, behavior: 'smooth'})" style="margin-top:20px; background:#b5935a; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
-                Ver Ubicación
-            </button>
+        <p>¡Nos Casamos!</p>
     </div>
 
     <div class="card-perspective" data-aos="fade-up">
-        ... (aquí va el código de la tarjeta)
-        <div class="card-perspective" data-aos="fade-up" id="cardContainer">
         <div class="card-inner" id="cardInner">
-            
-            <div class="card-front">
-                <div class="photo-container">
-                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=500" alt="Novia">
-                </div>
-                <h2>Mariana Rodríguez</h2>
-                <p>Nuestra Novia</p>
             </div>
-
-            <div class="card-back">
-                <i class="fas fa-heart"></i>
-                <h3>Gracias</h3>
-                <p>Por compartir este día tan especial con nosotros. Tu amor y apoyo significan todo para mí en este nuevo camino.</p>
-                <p class="signature">Con cariño, Mariana.</p>
-            </div>
-
-        </div>
-    </div>
     </div>
 
-    <div class="gallery-container">
-        ... (aquí va el código de las fotos)
-    </div>
-
-    <div class="boton-container">
-        ... (aquí va el código del botón)
+    <div class="boton-container" data-aos="fade-up">
+        <a href="#" class="btn-whatsapp">Confirmar en WhatsApp</a>
     </div>
 
 </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
+        // AQUÍ VA EL CÓDIGO QUE TE PASÉ
         function abrirInvitacion() {
-            const sobreSeccion = document.getElementById('seccion-sobre');
-            const contenidoSeccion = document.getElementById('seccion-contenido');
+            const sobre = document.getElementById('seccion-sobre');
+            const contenido = document.getElementById('seccion-contenido');
 
-            // 1. Activar animación de apertura del sobre
-            sobreSeccion.classList.add('open');
+            // 1. Inicia la animación visual del sobre
+            sobre.classList.add('open');
 
-            // 2. Esperar a que la carta suba y luego desvanecer el sobre
+            // 2. Espera a que termine la animación para cambiar de sección
             setTimeout(() => {
-                sobreSeccion.classList.add('hidden');
-                contenidoSeccion.classList.add('show');
-                // Habilitar el scroll de la página una vez abierta
-                document.body.style.overflow = 'auto';
+                sobre.style.display = 'none'; // Quita el sobre del camino
+                contenido.classList.add('show'); // Muestra la invitación
+                
+                // Habilitamos el scroll para que el invitado pueda bajar
+                document.body.style.overflowY = "auto";
+                
+                // Refrescamos las animaciones de las tarjetas y fotos
+                AOS.init(); 
+                AOS.refresh();
             }, 1200);
         }
 
-        // Bloquear scroll al inicio hasta que se abra el sobre
+        // Bloqueo inicial: Para que no puedan bajar sin abrir el sobre
         window.onload = () => {
-            document.body.style.overflow = 'hidden';
-        }
+            document.body.style.overflowY = "hidden";
+            window.scrollTo(0, 0);
+        };
     </script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // 1. Inicializar animaciones de scroll
