@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda - Invitación Interactiva</title>
+    <title>Boda - Invitación Premium</title>
     
     <link rel="stylesheet" href="style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bloqueado">
+<body>
 
     <section id="pantalla-inicio">
         <div class="envelope" id="miSobre" onclick="iniciarApertura()">
+            
+            <div class="envelope-base"></div>
+            
             <div class="flap"></div>
-            <div style="position: absolute; width:100%; height:100%; display:flex; justify:center; align-items:center; color:white; font-size: 0.8rem; letter-spacing:2px;">
-                TOCAR PARA ABRIR
-            </div>
+            
+            <div class="stamp"></div>
+            
+            <div class="click-to-open">TOCAR PARA ABRIR</div>
+            
         </div>
     </section>
 
     <main id="invitacion-real">
         
         <section class="bloque" data-aos="fade-up">
-            <h1>Nombre & Nombre</h1>
-            <p>¡NOS CASAMOS!</p>
+            <h1>Mariana & Alejandro</h1>
+            <p style="letter-spacing: 4px; font-weight: 300;">¡NOS CASAMOS!</p>
         </section>
 
         </main>
@@ -38,7 +42,7 @@
             const inicio = document.getElementById('pantalla-inicio');
             const invitacion = document.getElementById('invitacion-real');
 
-            // 1. Efecto visual de apertura
+            // 1. Efecto visual de apertura (gira solapa, quita sello)
             sobre.classList.add('open');
 
             // 2. Transición a la invitación
@@ -51,11 +55,12 @@
                     // Pequeño delay para el fade in de la invitación
                     setTimeout(() => {
                         invitacion.style.opacity = '1';
-                        AOS.init({ duration: 1000, mirror: true });
+                        window.scrollTo(0, 0); // Asegura empezar arriba
+                        AOS.init({ duration: 1200, mirror: true });
                         document.body.style.overflowY = "auto";
                     }, 100);
                 }, 800);
-            }, 800);
+            }, 1000); // Damos un poco más de tiempo para ver la solapa abrirse
         }
 
         // Bloqueo inicial
