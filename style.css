@@ -1,17 +1,28 @@
-/* 1. Base del documento */
-html, body {
+/* --- VARIABLES Y CONFIGURACIÓN --- */
+:root {
+    --color-fondo: #fdfcfb;
+    --color-sobre: #b5935a;
+    --color-texto: #5a4a42;
+    --fuente-elegante: 'Great Vibes', cursive;
+    --fuente-base: 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    background-color: #fdfcfb; /* Color de fondo general */
-    /* Permitimos el scroll solo cuando el sobre se oculte */
-    overflow-x: hidden; 
+    min-height: 100vh;
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-base);
+    color: var(--color-texto);
+    overflow-x: hidden;
 }
 
-/* 2. Sección del Sobre (Cubre toda la pantalla al inicio) */
-#seccion-sobre {
-    position: fixed; /* Siempre fijo arriba hasta que desaparezca */
+/* --- SECCIÓN 1: EL SOBRE (PANTALLA COMPLETA) --- */
+#pantalla-inicio {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -19,276 +30,71 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Por encima de todo */
-    background-color: #fdfcfb;
+    z-index: 1000;
+    background-color: var(--color-fondo);
     transition: opacity 0.8s ease, visibility 0.8s;
-
-    
-    
-    
-    
 }
 
-/* 3. Sección de Contenido (El pergamino de la invitación) */
-#seccion-contenido {
-    display: none; /* Oculto inicialmente */
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Alinea al inicio (arriba) */
-    width: 100%;
-    min-height: 100vh;
-    padding: 80px 20px; /* Espacio para que respiren los elementos */
-    box-sizing: border-box;
-    gap: 60px; /* Espacio uniforme entre cada bloque */
-        opacity: 0;
-     
-    
-   
-    padding-top: 100px; /* ESTO BAJA LOS NOMBRES PARA QUE SE VEAN */
-   
-   
-}
-/* EL SOBRE (CUERPO) */
+/* Contenedor del sobre responsivo */
 .envelope {
     position: relative;
-    width: 320px; /* Tamaño fijo para que no se pierda */
-    height: 220px;
-    background-color: #b5935a; /* EL COLOR DORADO */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 400px; /* Tamaño ideal en PC */
+    aspect-ratio: 3 / 2; /* Mantiene la forma en cualquier pantalla */
+    background-color: var(--color-sobre);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
-/* LA SOLAPA */
+
+/* Solapa dinámica */
 .flap {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-top: 130px solid #b5935a; /* COLOR DORADO */
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-sobre);
+    clip-path: polygon(0 0, 50% 55%, 100% 0); /* Triángulo perfecto */
     z-index: 3;
     transform-origin: top;
-    transition: transform 0.6s ease;
-}
-/* Cuando se activa la invitación */
-#seccion-contenido.show {
-    display: flex; /* Cambia de none a flex */
-      opacity: 1;
+    transition: transform 0.7s ease-in-out;
 }
 
-/* Ajuste de los bloques hijos */
-.invitation-main, .card-perspective, .boton-container {
-    width: 100%;
-    max-width: 400px; /* Limita el ancho para que se vea bien en PC y móvil */
-    display: flex;
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+/* --- SECCIÓN 2: LA INVITACIÓN (CONTENIDO) --- */
+#invitacion-real {
+    display: none; /* Se activa con JS */
+    opacity: 0;
     flex-direction: column;
     align-items: center;
-}
-
-
-/* Contenedor del botón para centrarlo */
-.boton-container {
-    margin: 40px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Diseño del Botón */
-.btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white;
-    padding: 18px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-    position: relative;
-    overflow: hidden; /* Necesario para el efecto de brillo */
-    transition: all 0.3s ease;
-}
-
-/* Icono de WhatsApp */
-.btn-whatsapp i {
-    font-size: 1.5rem;
-}
-
-/* EFECTO 1: Pulso sutil constante */
-.btn-whatsapp {
-    animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-/* EFECTO 2: Brillo que cruza el botón */
-.btn-whatsapp::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 20%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: rotate(30deg);
-    transition: none;
-    animation: shine 3s infinite;
-}
-
-@keyframes shine {
-    0% { left: -60%; }
-    20% { left: 120%; }
-    100% { left: 120%; }
-}
-
-/* Efecto al poner el mouse o tocar */
-.btn-whatsapp:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
-    filter: brightness(1.1);
-}
-
-
-/* targeta novia */
-
-/* Configuración de fuentes y base */
-:root {
-    --color-novia: #f4dcd6; /* Rosa suave */
-    --color-texto: #5a4a42;
-    --oro: #b5935a;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
+    padding: 60px 20px;
+    gap: 80px;
+    transition: opacity 1s ease;
 }
 
-/* CONTENEDOR CON PERSPECTIVA */
-.card-perspective {
-    width: 300px;
-    height: 400px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-/* LA TARJETA QUE GIRA */
-.card-inner {
-    position: relative;
+/* Estilos de los bloques de contenido */
+.bloque {
     width: 100%;
-    height: 100%;
+    max-width: 600px;
     text-align: center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
 }
 
-/* Clase para activar el giro */
-.card-inner.is-flipped {
-    transform: rotateY(180deg);
+.bloque h1 {
+    font-family: var(--fuente-elegante);
+    font-size: clamp(3rem, 10vw, 5rem); /* Tamaño fluido: se ajusta solo */
+    color: var(--color-sobre);
+    margin-bottom: 10px;
 }
 
-/* CARAS DE LA TARJETA */
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #eee;
+/* --- RESPONSIVIDAD EXTRA --- */
+@media (max-width: 480px) {
+    #invitacion-real { padding-top: 40px; }
+    .bloque p { font-size: 0.9rem; }
 }
-
-/* --- CARA FRONTAL --- */
-.card-front {
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.photo-container {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid var(--color-novia);
-    margin-top: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.photo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-front h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.2rem;
-    margin: 0;
-    color: var(--color-texto);
-}
-
-.card-front p {
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    color: var(--oro);
-    margin-top: 10px;
-}
-
-/* --- CARA TRASERA --- */
-.card-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(135deg, #fff 0%, var(--color-novia) 100%);
-    justify-content: center;
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-.card-back i {
-    font-size: 2rem;
-    color: var(--oro);
-    margin-bottom: 20px;
-}
-
-.card-back h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
-    color: var(--color-texto);
-    margin: 0;
-}
-
-.card-back p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #666;
-}
-
-.signature {
-    margin-top: 15px;
-    font-weight: bold;
-    color: var(--color-texto);
-}
-
 
 
 
