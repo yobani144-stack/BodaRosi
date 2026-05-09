@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    // targeta novia
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -68,6 +73,52 @@
         window.onload = () => {
             document.body.style.overflow = 'hidden';
         }
+    </script>
+
+    // targeta novia 
+    <div class="card-perspective" data-aos="fade-up" id="cardContainer">
+        <div class="card-inner" id="cardInner">
+            
+            <div class="card-front">
+                <div class="photo-container">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=500" alt="Novia">
+                </div>
+                <h2>Mariana Rodríguez</h2>
+                <p>Nuestra Novia</p>
+            </div>
+
+            <div class="card-back">
+                <i class="fas fa-heart"></i>
+                <h3>Gracias</h3>
+                <p>Por compartir este día tan especial con nosotros. Tu amor y apoyo significan todo para mí en este nuevo camino.</p>
+                <p class="signature">Con cariño, Mariana.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Inicializar animaciones de scroll
+        AOS.init({
+            duration: 1000,
+            once: false,   // Clave: permite que reaparezca al subir o bajar
+            mirror: true,  // Clave: anima mientras sales de la pantalla
+            offset: 100
+        });
+
+        // 2. Lógica para el giro al hacer clic o tocar
+        const container = document.getElementById('cardContainer');
+        const inner = document.getElementById('cardInner');
+
+        container.addEventListener('click', () => {
+            inner.classList.toggle('is-flipped');
+        });
+
+        // Refrescar AOS para Google Sites
+        window.addEventListener('load', () => {
+            setTimeout(() => { AOS.refresh(); }, 200);
+        });
     </script>
 </body>
 </html>
