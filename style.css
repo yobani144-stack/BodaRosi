@@ -61,7 +61,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("img/textura.jpg"); /* !!! MISMA TEXTURA !!! */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* !!! MISMA TEXTURA !!! */
     background-size: cover;
     /* clip-path orgánico: simula el doblez de la foto */
     clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%);
@@ -80,7 +80,7 @@ body, html {
     transform: translate(-50%, -50%);
     width: 80px; /* Tamaño del sello */
     height: 80px;
-    background-image: url('https://img.icons8.com/color/512/wax-seal.png'); /* !!! TU IMAGEN DE SELLO !!! */
+    background-image: url('background-image: url('img/sello-lacre.png'); /* !!! TU IMAGEN DE SELLO !!! */
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 4; /* Por encima de la solapa */
