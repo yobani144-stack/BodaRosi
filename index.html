@@ -51,30 +51,51 @@
         
            <div class="card-perspective" data-aos="fade-up">
         ... (aquí va el código de la tarjeta)
-                 <div class="invitation-main">
-        <h1>Mariana & Alejandro</h1>
-         <div class="invitation-main">
-            <div class="card-perspective" data-aos="fade-up" id="cardContainer">
-                <div class="card-inner" id="cardInner">
-                    <div class="card-front">
-                        <div class="photo-container">
-                        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=500" alt="Novia">
-                        </div>
-                        <h2>Rosa Isela Garcia</h2>
-                        <p>Nuestra Novia</p>
-                    </div>
-                       <div class="card-back">
-                            <i class="fas fa-heart"></i>
-                             <h3>Gracias</h3>
-                             <p>Por compartir este día tan especial con nosotros. Tu amor y apoyo significan todo para mí en este nuevo camino.</p>
-                            <p class="signature">Con cariño, R. Isela.</p>
-                        </div>
-
+                 <div class="card-perspective" data-aos="fade-up" id="cardContainer">
+        <div class="card-inner" id="cardInner">
+            
+            <div class="card-front">
+                <div class="photo-container">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=500" alt="Novia">
                 </div>
+                <h2>Mariana Rodríguez</h2>
+                <p>Nuestra Novia</p>
             </div>
-    </div>
+
+            <div class="card-back">
+                <i class="fas fa-heart"></i>
+                <h3>Gracias</h3>
+                <p>Por compartir este día tan especial con nosotros. Tu amor y apoyo significan todo para mí en este nuevo camino.</p>
+                <p class="signature">Con cariño, Mariana.</p>
             </div>
+
+        </div>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Inicializar animaciones de scroll
+        AOS.init({
+            duration: 1000,
+            once: false,   // Clave: permite que reaparezca al subir o bajar
+            mirror: true,  // Clave: anima mientras sales de la pantalla
+            offset: 100
+        });
+
+        // 2. Lógica para el giro al hacer clic o tocar
+        const container = document.getElementById('cardContainer');
+        const inner = document.getElementById('cardInner');
+
+        container.addEventListener('click', () => {
+            inner.classList.toggle('is-flipped');
+        });
+
+        // Refrescar AOS para Google Sites
+        window.addEventListener('load', () => {
+            setTimeout(() => { AOS.refresh(); }, 200);
+        });
+    </script>
+         </div>
 </section>
     <script>
         function abrirInvitacion() {
@@ -106,30 +127,6 @@
 
     
   
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // 1. Inicializar animaciones de scroll
-        AOS.init({
-            duration: 1000,
-            once: false,   // Clave: permite que reaparezca al subir o bajar
-            mirror: true,  // Clave: anima mientras sales de la pantalla
-            offset: 100
-        });
-
-        // 2. Lógica para el giro al hacer clic o tocar
-        const container = document.getElementById('cardContainer');
-        const inner = document.getElementById('cardInner');
-
-        container.addEventListener('click', () => {
-            inner.classList.toggle('is-flipped');
-        });
-
-        // Refrescar AOS para Google Sites
-        window.addEventListener('load', () => {
-            setTimeout(() => { AOS.refresh(); }, 200);
-        });
-    </div>
-
-    </script>
+   
 </body>
 </html>
