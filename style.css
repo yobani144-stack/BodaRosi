@@ -128,6 +128,17 @@ body, html {
     opacity: 0;
     transform: translateY(50px);
     transition: all 1s ease;
+
+    flex-direction: column; /* Alinea los elementos en vertical */
+    align-items: center;    /* Centra los elementos horizontalmente */
+    gap: 50px;             /* Añade espacio de 50px entre cada bloque de contenido */
+    
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    
+   
+   
 }
 
 #seccion-contenido.show {
