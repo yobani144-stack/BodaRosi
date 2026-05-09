@@ -1,7 +1,5 @@
-/* --- VARIABLES Y CONFIGURACIÓN --- */
+/* --- CONFIGURACIÓN BASE --- */
 :root {
-    --color-fondo: #fdfcfb;
-    --color-sobre: #b5935a;
     --color-texto: #5a4a42;
     --fuente-elegante: 'Great Vibes', cursive;
     --fuente-base: 'Montserrat', sans-serif;
@@ -14,13 +12,13 @@ body, html {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: var(--color-fondo);
     font-family: var(--fuente-base);
     color: var(--color-texto);
     overflow-x: hidden;
+    background-color: #f4f1ea; /* Color base crema */
 }
 
-/* --- SECCIÓN 1: EL SOBRE (PANTALLA COMPLETA) --- */
+/* --- SECCIÓN 1: EL SOBRE REALISTA --- */
 #pantalla-inicio {
     position: fixed;
     top: 0;
@@ -31,52 +29,105 @@ body, html {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background-color: var(--color-fondo);
     transition: opacity 0.8s ease, visibility 0.8s;
 }
 
-/* Contenedor del sobre responsivo */
+/* Contenedor principal del sobre */
 .envelope {
     position: relative;
     width: 90%;
-    max-width: 400px; /* Tamaño ideal en PC */
-    aspect-ratio: 3 / 2; /* Mantiene la forma en cualquier pantalla */
-    background-color: var(--color-sobre);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    max-width: 450px;
+    aspect-ratio: 3 / 2.2; /* Proporción similar a la foto */
     cursor: pointer;
+    perspective: 1000px;
 }
 
-/* Solapa dinámica */
+/* Base del sobre (Papel con Textura y Sombra) */
+.envelope-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('textura-papel.jpg'); /* !!! TU IMAGEN DE TEXTURA !!! */
+    background-size: cover;
+    border-radius: 5px; /* Bordes ligeramente suaves */
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15); /* Sombra suave y difuminada */
+    z-index: 1;
+}
+
+/* Solapa Realista ( clip-path para forma orgánica ) */
 .flap {
     position: absolute;
-    top: 0;
+    top: -2px; /* Pequeño ajuste para cubrir borde */
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-sobre);
-    clip-path: polygon(0 0, 50% 55%, 100% 0); /* Triángulo perfecto */
+    background-image: url('textura-papel.jpg'); /* !!! MISMA TEXTURA !!! */
+    background-size: cover;
+    /* clip-path orgánico: simula el doblez de la foto */
+    clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%);
     z-index: 3;
     transform-origin: top;
-    transition: transform 0.7s ease-in-out;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Sombra interior para dar profundidad al doblez */
+    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.05); 
 }
 
+/* Sello de Lacre Realista */
+.stamp {
+    position: absolute;
+    top: 50%; /* Centrado donde se unen las solapas */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; /* Tamaño del sello */
+    height: 80px;
+    background-image: url('sello-lacre.png'); /* !!! TU IMAGEN DE SELLO !!! */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4; /* Por encima de la solapa */
+    transition: all 0.6s ease;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); /* Sombra realista al sello */
+}
+
+/* Texto indicativo suave */
+.click-to-open {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(90, 74, 66, 0.5); /* Color suave */
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    z-index: 2; /* Debajo de la solapa */
+}
+
+/* --- EFECTO DE APERTURA --- */
 .envelope.open .flap {
     transform: rotateX(180deg);
 }
 
-/* --- SECCIÓN 2: LA INVITACIÓN (CONTENIDO) --- */
+.envelope.open .stamp {
+    opacity: 0; /* El sello desaparece al abrir */
+    transform: translate(-50%, -100%) scale(0.5);
+}
+
+/* --- SECCIÓN 2: LA INVITACIÓN PREMIUM --- */
 #invitacion-real {
-    display: none; /* Se activa con JS */
+    display: none;
     opacity: 0;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 60px 20px;
+    min-height: 100vh;
+    padding: 100px 20px;
     gap: 80px;
     transition: opacity 1s ease;
+    /* Fondo premium para la invitación real */
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('fondo-boda.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-/* Estilos de los bloques de contenido */
+/* Estilos de los bloques (Nombres) */
 .bloque {
     width: 100%;
     max-width: 600px;
@@ -85,16 +136,10 @@ body, html {
 
 .bloque h1 {
     font-family: var(--fuente-elegante);
-    font-size: clamp(3rem, 10vw, 5rem); /* Tamaño fluido: se ajusta solo */
-    color: var(--color-sobre);
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    color: #b5935a; /* Dorado */
     margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
-/* --- RESPONSIVIDAD EXTRA --- */
-@media (max-width: 480px) {
-    #invitacion-real { padding-top: 40px; }
-    .bloque p { font-size: 0.9rem; }
-}
-
 
 
