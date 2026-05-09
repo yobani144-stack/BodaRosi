@@ -6,12 +6,6 @@
     <title>Invitación Especial</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -31,55 +25,14 @@
             <p>Junto a nuestras familias, tenemos el honor de invitarles a celebrar nuestra unión matrimonial.</p>
             <hr style="width: 50px; border: 1px solid #b5935a; margin: 30px auto;">
             <h3>26 de Diciembre, 2026</h3>
-            <p>15:00 Horas</p>
-            <p>Yondece del Cedro, San Jose del Rincon, Mexico.</p>
-            
-            <a href="https://www.google.com/maps/search/?api=1&query=Tu+Direccion+Aqui" 
-           target="_blank" 
-           style="display:inline-block; text-decoration:none; margin-top:20px; background:#b5935a; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-family: 'Montserrat', sans-serif; font-weight: 600;">
-               Ver Ubicación
-            </a>
-           
+            <p>18:00 Horas</p>
+            <p>Hacienda Los Ángeles, Ciudad de México</p>
+            <button onclick="window.scrollTo({top: 1000, behavior: 'smooth'})" style="margin-top:20px; background:#b5935a; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
+                Ver Ubicación
+            </button>
         </div>
+    </section>
 
-        
-           <div class="card-perspective" data-aos="fade-up">
-        ... (aquí va el código de la tarjeta)
-                 <div class="card-perspective" data-aos="fade-up" id="cardContainer">
-        <div class="card-inner" id="cardInner">
-            
-            <div class="card-front">
-                <div class="photo-container">
-                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577fac?w=500" alt="Novia">
-                </div>
-                <h2>Mariana Rodríguez</h2>
-                <p>Nuestra Novia</p>
-            </div>
-
-            <div class="card-back">
-                <i class="fas fa-heart"></i>
-                <h3>Gracias</h3>
-                <p>Por compartir este día tan especial con nosotros. Tu amor y apoyo significan todo para mí en este nuevo camino.</p>
-                <p class="signature">Con cariño, Mariana.</p>
-            </div>
-
-        </div>
-    </div>
-
-    
-    
-         </div>
-    <div class="boton-container">
-        ... (aquí va el código del botón)
-        <div class="boton-container">
-                <a href="https://wa.me/527291255411?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda." 
-                   class="btn-whatsapp" 
-                   target="_blank">
-                    <i class="fab fa-whatsapp"></i> Confirmar Asistencia
-                </a>
-            </div>
-    </div>
-</section>
     <script>
         function abrirInvitacion() {
             const sobreSeccion = document.getElementById('seccion-sobre');
@@ -102,35 +55,5 @@
             document.body.style.overflow = 'hidden';
         }
     </script>
-
-
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // 1. Inicializar animaciones de scroll
-        AOS.init({
-            duration: 1000,
-            once: false,   // Clave: permite que reaparezca al subir o bajar
-            mirror: true,  // Clave: anima mientras sales de la pantalla
-            offset: 100
-        });
-
-        // 2. Lógica para el giro al hacer clic o tocar
-        const container = document.getElementById('cardContainer');
-        const inner = document.getElementById('cardInner');
-
-        container.addEventListener('click', () => {
-            inner.classList.toggle('is-flipped');
-        });
-
-        // Refrescar AOS para Google Sites
-        window.addEventListener('load', () => {
-            setTimeout(() => { AOS.refresh(); }, 200);
-        });
-    </script>
-
-    
-  
-   
 </body>
 </html>
