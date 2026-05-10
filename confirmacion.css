@@ -1,0 +1,85 @@
+/* --- SECCIÓN CONFIRMACIÓN --- */
+#seccion-confirmacion {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.confirmacion-card {
+    background: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 50px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.icon-sobre {
+    font-size: 2.5rem;
+    color: var(--color-sobre);
+    margin-bottom: 20px;
+}
+
+.confirmacion-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: #4a4a4a;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.mensaje-motivador {
+    font-family: 'Montserrat', sans-serif;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.fecha-limite {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a1a1a1;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* --- BOTÓN WHATSAPP PASTEL --- */
+.btn-confirmar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #dcedc1; /* Verde Menta Pastel */
+    color: #5d6d4e; /* Texto verde oscuro suave */
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(220, 237, 193, 0.4);
+    transition: all 0.3s ease;
+    animation: pulso-confirmar 2s infinite;
+}
+
+@keyframes pulso-confirmar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.btn-confirmar:active {
+    transform: scale(0.95);
+    background-color: #cfe2b1;
+}
+
+/* Evitar el efecto feo de hover en móvil */
+@media (hover: hover) {
+    .btn-confirmar:hover {
+        background-color: #cfe2b1;
+        box-shadow: 0 15px 25px rgba(220, 237, 193, 0.6);
+    }
+}
