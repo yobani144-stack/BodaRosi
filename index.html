@@ -69,6 +69,7 @@
         </div>
     </div>
             <div id="seccion-novios-contenedor"></div>
+            <div id="galeria-fotos"></div>
 </section>
     </main>
 
@@ -192,5 +193,39 @@ const interval = setInterval(function() {
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+       // Inicializar Swiper script para carruel de fotos
+const swiper = new Swiper(".mySwiper", {
+    effect: "coverflow", // Efecto 3D elegante
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    coverflowEffect: {
+        rotate: 30,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+
+// Función para disparar animaciones diferentes al tocar
+function animarFoto(elemento, tipo) {
+    const claseAnimacion = `anim-${tipo}`;
+    
+    // Añadimos la clase
+    elemento.classList.add(claseAnimacion);
+    
+    // La quitamos cuando termine para poder repetirla
+    setTimeout(() => {
+        elemento.classList.remove(claseAnimacion);
+    }, 700);
+} 
+    </script>
 </body>
 </html>
