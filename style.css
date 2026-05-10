@@ -35,7 +35,7 @@ body, html {
     perspective: 1000px;
 }
 
-/* Efecto de partículas de luz (Luces de Boda) 
+/* Efecto de partículas de luz (Luces de Boda) */
 .particles {
     position: absolute;
     width: 100%;
@@ -44,46 +44,9 @@ body, html {
     background-size: 50px 50px;
     animation: moveParticles 20s linear infinite;
     pointer-events: none;
-}*/
-
-/* Efecto de Burbujas Flotando */
-.particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* Creamos una burbuja con borde suave y un centro casi transparente */
-    background-image: 
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5) 0%, transparent 10%), /* Brillo de la burbuja */
-        radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0) 70%); /* Cuerpo y borde */
-    
-    /* Tamaño de la "celda" donde vive cada burbuja */
-    background-size: 80px 80px; 
-    
-    /* Animación más lenta y suave para burbujas */
-    animation: moveBubbles 25s linear infinite;
-    pointer-events: none;
-    opacity: 0.6; /* Para que no distraigan demasiado del sobre */
 }
 
-/* Animación con un ligero bamboleo (oscilación) */
-@keyframes moveBubbles {
-    0% {
-        transform: translateY(0) translateX(0);
-    }
-    33% {
-        transform: translateY(-200px) translateX(20px);
-    }
-    66% {
-        transform: translateY(-400px) translateX(-20px);
-    }
-    100% {
-        transform: translateY(-600px) translateX(0);
-    }
-}
-@keyframes moveParticles {
-    from { transform: translateY(0); }
-    to { transform: translateY(-500px); }
-}
+
 
 /* Ajuste del Sobre para que sea el Rey de la pantalla */
 .envelope {
