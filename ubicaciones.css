@@ -138,3 +138,10 @@
 .ubicacion-card:hover {
         transform: translateY(-10px);
     }
+* Solo aplicar el hover si el dispositivo tiene mouse (PC) */
+@media (hover: hover) {
+    .btn-maps:hover {
+        background-color: #8e7348;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(181, 147, 90, 0.4);
+    }
