@@ -1,17 +1,20 @@
+// Carga de la sección
+fetch('confirmacion.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contenedor-confirmacion').innerHTML = data;
+        if (typeof AOS !== 'undefined') AOS.refresh();
+    });
 
-// Ejemplo de contenido de tu archivo script.js
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("JavaScript cargado correctamente");
+// Función para enviar el mensaje personalizado
+function enviarWhatsApp(event) {
+    event.preventDefault();
     
-    // Aquí mueves todas tus funciones: fetch, AOS, Swiper, etc.
-    cargarSecciones();
-});
-
-function cargarSecciones() {
-    // Ejemplo de tus cargas fetch
-    fetch('itinerario.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('contenedor-itinerario').innerHTML = data;
-        });
+    const telefono = "527291255411"; // <-- SUSTITUYE CON TU NÚMERO (Código de país + número)
+    const mensaje = encodeURIComponent("¡Hola! Me encantaría confirmar mi asistencia a la boda de Rosa Isela y Diego. ¡Muchas gracias por la invitación! ✨");
+    
+    const url = `https://wa.me/${telefono}?text=${mensaje}`;
+    
+    // Abrir en pestaña nueva
+    window.open(url, '_blank');
 }
