@@ -3,6 +3,9 @@
     --color-texto: #5a4a42;
     --fuente-elegante: 'Great Vibes', cursive;
     --fuente-base: 'Montserrat', sans-serif;
+    --color--olivaclaro: #C8C8B4;
+    --color--olivasuave:#86895d;
+    --color--olivahoja: #A2B06D;
 }
 
 * { box-sizing: border-box; }
@@ -131,14 +134,14 @@ body, html {
     width: 100%;
     height: 100%;
     /* DIBUJAMOS LAS LÍNEAS DIAGONALES */
-    background: 
+ /*   background: */
         /* Línea Izquierda: Va de la esquina superior izquierda al centro */
-        linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(0,0,0,0.06) 50%, transparent calc(50% + 1px)) top left / 50% 100% no-repeat,
+        /*linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(0,0,0,0.06) 50%, transparent calc(50% + 1px)) top left / 50% 100% no-repeat, */
         /* Línea Derecha: Va de la esquina superior derecha al centro */
-        linear-gradient(to bottom left, transparent calc(50% - 1px), rgba(0,0,0,0.06) 50%, transparent calc(50% + 1px)) top right / 50% 100% no-repeat;
+        /*linear-gradient(to bottom left, transparent calc(50% - 1px), rgba(0,0,0,0.06) 50%, transparent calc(50% + 1px)) top right / 50% 100% no-repeat;*/
     
-    z-index: 1; /* Por debajo del sello (que debe tener z-index: 2 o más) */
-    pointer-events: none; /* Para que no interfiera con el click */
+    /*z-index: 1; */ /* Por debajo del sello (que debe tener z-index: 2 o más) */
+   /* pointer-events:*/ none; /* Para que no interfiera con el click */
 }
 
 /* Base del sobre (Papel con Textura y Sombra) */
