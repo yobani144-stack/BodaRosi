@@ -13,7 +13,7 @@
 #seccion-novios h2 {
     font-family: 'Playfair Display', serif; /* La fuente elegante de tu boda */
    /*color: var(--color-sobre);*/ /* El dorado/marrón del sobre */
-   color: var(--color-verdeclaro);
+   color: var(--color-verdehoja);
     font-size: 2rem;
     margin-bottom: 50px;
     letter-spacing: 2px;
@@ -44,7 +44,8 @@
     text-align: center;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Giro suave */
     transform-style: preserve-3d;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+   /* box-shadow: 0 15px 35px rgba(0,0,0,0.15);*/
+   box-shadow: 0 15px 35px rgba(186, 184, 108, 1);
     border-radius: 15px;
 }
 
