@@ -71,17 +71,23 @@
 /* --- BOTÓN GOOGLE MAPS --- */
 .btn-maps {
     display: inline-block;
-    background-color: var(--color-sobre); /* Dorado/Marrón de tu paleta */
+    background-color: var(--color-sobre);
     color: white;
-    padding: 12px 25px;
+    padding: 14px 28px;
     border-radius: 50px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(181, 147, 90, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 147, 90, 0.3);
+    
+    /* Animación de pulso constante para llamar la atención en móvil */
+    animation: pulso-boton 3s infinite;
+    -webkit-tap-highlight-color: transparent; /* Quita el recuadro azul feo en Android */
 }
 
 .btn-maps i {
@@ -100,4 +106,32 @@
         justify-content: center;
         gap: 50px;
     }
+}
+.btn-maps:active {
+    transform: scale(0.95); /* Se hunde ligeramente al tocar */
+    background-color: #8e7348;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    /* Animación de pulso sutil */
+@keyframes pulso-boton {
+    0% { box-shadow: 0 0 0 0 rgba(181, 147, 90, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(181, 147, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(181, 147, 90, 0); }
+}
+    /* Añade un destello que cruza el botón cada cierto tiempo */
+.btn-maps::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(30deg);
+    transition: none;
+    animation: brillo-btn 4s infinite;
+}
+@keyframes brillo-btn {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
 }
