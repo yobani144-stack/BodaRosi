@@ -12,7 +12,7 @@
 
 #seccion-novios h2 {
     font-family: 'Playfair Display', serif; /* La fuente elegante de tu boda */
-   / color: var(--color-sobre);*/ /* El dorado/marrón del sobre */
+   /*color: var(--color-sobre);*/ /* El dorado/marrón del sobre */
    color: var(--color-verdeclaro);
     font-size: 2rem;
     margin-bottom: 50px;
