@@ -10,6 +10,7 @@
      <link rel="stylesheet" href="musica.css">
     <link rel="stylesheet" href="novios.css">
     <link rel="stylesheet" href="carrusel.css">
+     <link rel="stylesheet" href="familia.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -71,6 +72,7 @@
     </div>
             <div id="seccion-novios-contenedor"></div>
             <div id="contenedor-carrusel"></div>
+            <div id="contenedor-familia"></div>
 </section>
     </main>
 
@@ -263,6 +265,21 @@ function inicializarSwiper() {
             clickable: true,
         },
     });
+}
+    </script>
+
+    <script>
+        // 1. Cargar el archivo familia.html
+fetch('familia.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contenedor-familia').innerHTML = data;
+        if (typeof AOS !== 'undefined') AOS.refresh();
+    });
+
+// 2. Función para mostrar/ocultar padrinos al tocar
+function revelarPadrinos(card) {
+    card.classList.toggle('show-padrinos');
 }
     </script>
 </body>
