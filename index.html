@@ -70,7 +70,7 @@
         </div>
     </div>
             <div id="seccion-novios-contenedor"></div>
-            <div id="galeria-fotos"></div>
+            <div id="contenedor-carrusel"></div>
 </section>
     </main>
 
@@ -227,6 +227,43 @@ function animarFoto(elemento, tipo) {
         elemento.classList.remove(claseAnimacion);
     }, 700);
 } 
+    </script>
+    <script>
+        // Función para cargar el carrusel
+fetch('carrusel.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contenedor-carrusel').innerHTML = data;
+        
+        // IMPORTANTE: Inicializar Swiper justo después de cargar el HTML
+        inicializarSwiper(); 
+        
+        // Refrescar AOS para que detecte la nueva sección
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    });
+
+function inicializarSwiper() {
+    new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        coverflowEffect: {
+            rotate: 30,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+}
     </script>
 </body>
 </html>
