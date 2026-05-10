@@ -135,3 +135,6 @@
     20% { left: 120%; }
     100% { left: 120%; }
 }
+.ubicacion-card:hover {
+        transform: translateY(-10px);
+    }
