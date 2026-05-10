@@ -60,7 +60,8 @@
     height: 100%;
     backface-visibility: hidden; /* Oculta la parte de atrás mientras gira */
     border-radius: 15px;
-    border: 3px solid rgba(181, 147, 90, 0.4); /* Borde dorado translúcido */
+    /*border: 3px solid rgba(181, 147, 90, 0.4); */ /* Borde dorado translúcido */
+   border: 3px solid rgba(rgba(186, 184, 108, 1)); /* Borde VERDE OLIVA */
     padding: 20px;
     display: flex;
     flex-direction: column;
