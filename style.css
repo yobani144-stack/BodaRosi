@@ -18,7 +18,8 @@ body, html {
     font-family: var(--fuente-base);
     color: var(--color-texto);
     overflow-x: hidden;
-    background-color: #f4f1ea; /* Color base crema */
+  /*  background-color: #f4f1ea;*/ /* Color base crema */
+     background-color: #C8C8B4; /*verde oliva claro*/ 
 }
 
 /* --- SECCIÓN 1: EL SOBRE REALISTA --- */
