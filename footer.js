@@ -15,3 +15,8 @@ function pedirInformes(event) {
     // Abrimos en una nueva pestaña
     window.open(urlWhatsapp, '_blank');
 }
+fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contenedor-footer').innerHTML = data;
+    });
