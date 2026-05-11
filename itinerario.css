@@ -1,109 +1,90 @@
-/* --- ESTILOS ITINERARIO (EDICIÓN VERDE OLIVA) --- */
-#seccion-itinerario {
-    padding: 80px 20px;
-    position: relative;
-}
-
-.titulo-itinerario {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    /* CAMBIO: Color Verde Oliva para el título */
-    color: #708238; 
-    margin-bottom: 60px;
-    font-size: 2.2rem;
-}
+/* --- REDISEÑO DE LA LÍNEA VERDE DEL ITINERARIO --- */
 
 .timeline-container {
     position: relative;
-    max-width: 600px;
+    max-width: 800px; /* Un poco más ancho para que el texto respire */
     margin: 0 auto;
+    padding: 40px 0;
 }
 
-/* La línea vertical central */
+/* La línea central: la haremos más delgada y elegante */
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 2px;
-    /* CAMBIO: Línea en Verde Oliva Pastel muy suave */
-    background-color: #acc6aa; 
+    width: 1px; /* Línea ultra fina */
+    background: linear-gradient(to bottom, 
+        transparent, 
+        #708238 15%, 
+        #708238 85%, 
+        transparent); /* Desvanecida en los extremos */
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -1px;
-    opacity: 0.5;
+    margin-left: -0.5px;
+    opacity: 0.4;
 }
 
-/* Icono circular en la línea */
+/* Ajuste de los items para que no choquen con la línea */
+.timeline-item {
+    padding: 20px 60px; /* Más espacio lateral */
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Círculos decorativos (los que aparecen en la línea) */
 .timeline-icon {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    right: -20px;
-    top: 15px;
-    background-color: white;
-    /* CAMBIO: Borde en Verde Oliva Pastel */
-    border: 2px solid #acc6aa; 
+    width: 12px;  /* Más pequeños y delicados */
+    height: 12px;
+    background-color: #708238; /* Verde Oliva sólido */
+    border: 3px solid white; /* Efecto anillo */
     border-radius: 50%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* CAMBIO: Icono en Verde Oliva */
-    color: #708238; 
-    font-size: 0.9rem;
-    box-shadow: 0 0 10px rgba(172, 198, 170, 0.3);
+    z-index: 2;
+    top: 50%; /* Centrado vertical con la caja de texto */
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 3px rgba(112, 130, 56, 0.2); /* Resplandor oliva */
+}
+
+/* Posicionamiento exacto de los puntos sobre la línea */
+.timeline-item:nth-child(odd) .timeline-icon {
+    right: -6px; /* Ajuste para que quede sobre la línea central */
 }
 
 .timeline-item:nth-child(even) .timeline-icon {
-    left: -20px;
+    left: -6px; /* Ajuste para que quede sobre la línea central */
 }
 
-/* Caja de texto */
+/* Estilo de las cajas de texto */
 .timeline-content {
-    padding: 20px;
-    background: white;
-    border-radius: 15px;
-    /* CAMBIO: Sombra sutil con tinte oliva para profundidad */
-    box-shadow: 0 4px 15px rgba(112, 130, 56, 0.08); 
-    /* CAMBIO: Borde lateral discreto en Oliva */
-    border-left: 3px solid #dce5db; 
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px); /* Efecto cristal */
+    border: 1px solid rgba(112, 130, 56, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
 }
 
-/* Ajuste para los items de la derecha para que el borde esté del lado correcto */
-.timeline-item:nth-child(even) .timeline-content {
-    border-left: none;
-    border-right: 3px solid #dce5db;
-}
+/* Ajuste para móvil (Pantallas pequeñas) */
+@media screen and (max-width: 768px) {
+    .timeline-container::after {
+        left: 30px; /* Movemos la línea a la izquierda */
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px; /* Espacio para la línea a la izquierda */
+        padding-right: 20px;
+        text-align: left !important;
+    }
 
-.time {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    /* CAMBIO: Hora en Verde Oliva resaltado */
-    color: #708238; 
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-}
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
 
-.timeline-content h3 {
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.timeline-content p {
-    font-size: 0.85rem;
-    color: #777;
-    margin-top: 5px;
-}
-
-/* Ajuste móvil */
-@media screen and (max-width: 600px) {
-    .timeline-container::after { left: 31px; }
-    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left !important; }
-    .timeline-item:nth-child(even) { left: 0%; }
-    .timeline-icon { left: 11px !important; }
-    /* CAMBIO: En móvil todos los bordes a la izquierda */
-    .timeline-item:nth-child(even) .timeline-content { border-right: none; border-left: 3px solid #dce5db; }
+    .timeline-icon {
+        left: 24px !important; /* Punto sobre la línea lateral */
+    }
 }
