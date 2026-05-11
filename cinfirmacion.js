@@ -1,17 +1,20 @@
-function pedirInformes(event) {
-    // Evitamos que el enlace intente recargar la página
+// Carga de la sección
+fetch('cinfirmacion.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contenedor-confirmacion').innerHTML = data;
+        if (typeof AOS !== 'undefined') AOS.refresh();
+    });
+
+// Función para enviar el mensaje personalizado
+function enviarWhatsApp(event) {
     event.preventDefault();
     
-    // Configuración de tu número y mensaje
-    const miTelefono = "527191255411"; // <-- PON AQUÍ TU NÚMERO (Código país + número)
-    const textoMensaje = "¡Hola! Vi la invitación digital y me encantó su trabajo. ✨ Me gustaría recibir más información sobresus precios. ¡Muchas gracias!";
+    const telefono = "527291255411"; // <-- SUSTITUYE CON TU NÚMERO (Código de país + número)
+    const mensaje = encodeURIComponent("¡Hola! Me encantaría confirmar mi asistencia a la boda de Rosa Isela y Diego. ¡Muchas gracias por la invitación! ✨");
     
-    // Codificamos el texto para que WhatsApp lo entienda
-    const mensajeCodificado = encodeURIComponent(textoMensaje);
+    const url = `https://wa.me/${telefono}?text=${mensaje}`;
     
-    // Creamos la URL final
-    const urlWhatsapp = `https://wa.me/${miTelefono}?text=${mensajeCodificado}`;
-    
-    // Abrimos en una nueva pestaña
-    window.open(urlWhatsapp, '_blank');
+    // Abrir en pestaña nueva
+    window.open(url, '_blank');
 }
