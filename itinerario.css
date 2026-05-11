@@ -1,5 +1,8 @@
 /* --- REDISEÑO DE LA LÍNEA VERDE DEL ITINERARIO --- */
-
+#seccion-itinerario {
+    padding: 80px 20px;
+    position: relative;
+}
 .timeline-container {
     position: relative;
     max-width: 800px; /* Un poco más ancho para que el texto respire */
@@ -32,6 +35,9 @@
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+/* Alternancia izquierda/derecha */
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
 
 /* Círculos decorativos (los que aparecen en la línea) */
 .timeline-icon {
@@ -66,7 +72,25 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
 }
-
+.time {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: var(--color-sobre);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+.timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+.timeline-content p {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 5px;
+}
 /* Ajuste para móvil (Pantallas pequeñas) */
 @media screen and (max-width: 768px) {
     .timeline-container::after {
