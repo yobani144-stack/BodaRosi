@@ -1,22 +1,12 @@
-/* --- SECCIÓN UBICACIONES --- */
-#seccion-ubicaciones {
-    padding: 100px 20px;
-    background-color: transparent;
-}
+/* --- SECCIÓN UBICACIONES (EDICIÓN VERDE OLIVA) --- */
 
 .titulo-seccion {
     font-family: 'Playfair Display', serif;
-    color: var(--color-sobre);
+    /* CAMBIO: Título en Verde Oliva para dar coherencia */
+    color: #708238; 
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.2rem;
-}
-
-.ubicaciones-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
 }
 
 .ubicacion-card {
@@ -26,18 +16,17 @@
     padding: 40px 30px;
     border-radius: 25px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    border-bottom: 5px solid var(--color-sobre);
+    /* CAMBIO: Sombra muy suave con tinte oliva */
+    box-shadow: 0 15px 35px rgba(112, 130, 56, 0.1); 
+    /* CAMBIO: Borde inferior en Verde Oliva Pastel */
+    border-bottom: 5px solid #acc6aa; 
     transition: transform 0.3s ease;
-}
-
-.ubicacion-card:hover {
-    transform: translateY(-10px);
 }
 
 .icono-wrapper {
     font-size: 2.5rem;
-    color: var(--color-sobre);
+    /* CAMBIO: Iconos en Verde Oliva principal */
+    color: #708238; 
     margin-bottom: 20px;
 }
 
@@ -51,65 +40,40 @@
 .info-detalle .hora {
     font-weight: bold;
     letter-spacing: 2px;
-    color: var(--color-sobre);
+    /* CAMBIO: La hora resalta en Verde Oliva */
+    color: #708238; 
     margin-bottom: 10px;
 }
 
-.lugar-nombre {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.direccion-texto {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-/* --- BOTONES VERSIÓN PASTEL --- */
+/* --- EL BOTÓN DE MAPAS YA ES PASTEL SEGÚN LO ANTERIOR --- */
+/* Pero nos aseguramos de que combine con el Oliva */
 .btn-maps {
     display: inline-block;
-    /* Color de fondo: Rosa Palo Pastel (muy elegante para bodas) */
+    /* CAMBIO: Fondo Rosa Palo Pastel o Verde Menta según tu preferencia anterior */
     background-color: #f4dada; 
-    /* Texto en un tono café grisáceo para suavidad */
     color: #7a6a6a; 
-    
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border: none;
-    
-    /* Animación de pulso suave */
-    animation: pulso-pastel 2.5s infinite ease-in-out;
-    
-    /* Quitar efectos molestos de móvil */
-    -webkit-tap-highlight-color: transparent;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    /* CAMBIO: Sombra que armonice con el conjunto */
+    box-shadow: 0 5px 15px rgba(112, 130, 56, 0.15);
 }
 
-/* Color alternativo si prefieres Verde Menta Pastel */
-/* .btn-maps { background-color: #dcedc1; color: #6d7d5d; } */
-
-/* Animación de Pulso (Solo sombra, sin mover el botón) */
-@keyframes pulso-pastel {
-    0% {
-        box-shadow: 0 0 0 0 rgba(244, 218, 218, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(244, 218, 218, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(244, 218, 218, 0);
-    }
-}
-
-/* Efecto de presión simple al tocar */
+/* Efecto al tocar para que se sienta Oliva */
 .btn-maps:active {
-    background-color: #ebc3c3; /* Un poquito más oscuro al presionar */
-    transform: scale(0.98);
+    background-color: #dce5db; /* Cambio momentáneo a verde oliva muy claro al pulsar */
+    color: #708238;
+}
+
+/* Ajuste para que la tarjeta no se vea "pesada" en móvil */
+@media (max-width: 768px) {
+    .ubicacion-card {
+        border-bottom: 4px solid #acc6aa;
+        margin-bottom: 20px;
+    }
 }
