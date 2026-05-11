@@ -1,4 +1,4 @@
-/* --- ESTILOS ITINERARIO --- */
+/* --- ESTILOS ITINERARIO (EDICIÓN VERDE OLIVA) --- */
 #seccion-itinerario {
     padding: 80px 20px;
     position: relative;
@@ -7,7 +7,8 @@
 .titulo-itinerario {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    color: var(--color-sobre);
+    /* CAMBIO: Color Verde Oliva para el título */
+    color: #708238; 
     margin-bottom: 60px;
     font-size: 2.2rem;
 }
@@ -23,46 +24,38 @@
     content: '';
     position: absolute;
     width: 2px;
-    background-color: var(--color-sobre);
+    /* CAMBIO: Línea en Verde Oliva Pastel muy suave */
+    background-color: #acc6aa; 
     top: 0;
     bottom: 0;
     left: 50%;
     margin-left: -1px;
-    opacity: 0.3;
+    opacity: 0.5;
 }
-
-/* Cada item del itinerario */
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-    box-sizing: border-box;
-}
-
-/* Alternancia izquierda/derecha */
-.timeline-item:nth-child(odd) { left: 0; text-align: right; }
-.timeline-item:nth-child(even) { left: 50%; text-align: left; }
 
 /* Icono circular en la línea */
 .timeline-icon {
     position: absolute;
     width: 40px;
     height: 40px;
-    right: -20px; /* Centrado en la línea para items izquierdos */
+    right: -20px;
     top: 15px;
     background-color: white;
-    border: 2px solid var(--color-sobre);
+    /* CAMBIO: Borde en Verde Oliva Pastel */
+    border: 2px solid #acc6aa; 
     border-radius: 50%;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-sobre);
+    /* CAMBIO: Icono en Verde Oliva */
+    color: #708238; 
     font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(172, 198, 170, 0.3);
 }
 
 .timeline-item:nth-child(even) .timeline-icon {
-    left: -20px; /* Ajuste para el lado derecho */
+    left: -20px;
 }
 
 /* Caja de texto */
@@ -70,14 +63,24 @@
     padding: 20px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    /* CAMBIO: Sombra sutil con tinte oliva para profundidad */
+    box-shadow: 0 4px 15px rgba(112, 130, 56, 0.08); 
+    /* CAMBIO: Borde lateral discreto en Oliva */
+    border-left: 3px solid #dce5db; 
+}
+
+/* Ajuste para los items de la derecha para que el borde esté del lado correcto */
+.timeline-item:nth-child(even) .timeline-content {
+    border-left: none;
+    border-right: 3px solid #dce5db;
 }
 
 .time {
     display: block;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: var(--color-sobre);
+    /* CAMBIO: Hora en Verde Oliva resaltado */
+    color: #708238; 
     font-size: 0.8rem;
     margin-bottom: 5px;
 }
@@ -95,10 +98,12 @@
     margin-top: 5px;
 }
 
-/* Ajuste móvil total */
+/* Ajuste móvil */
 @media screen and (max-width: 600px) {
     .timeline-container::after { left: 31px; }
     .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0%; }
     .timeline-icon { left: 11px !important; }
+    /* CAMBIO: En móvil todos los bordes a la izquierda */
+    .timeline-item:nth-child(even) .timeline-content { border-right: none; border-left: 3px solid #dce5db; }
 }
