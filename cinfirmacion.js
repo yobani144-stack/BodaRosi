@@ -1,5 +1,5 @@
 // Carga de la sección
-fetch('confirmacion.html')
+fetch('cinfirmacion.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('contenedor-confirmacion').innerHTML = data;
