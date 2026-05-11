@@ -3,15 +3,20 @@ fetch('footer.html')
     .then(data => {
         document.getElementById('contenedor-footer').innerHTML = data;
     });
-// Función para enviar el mensaje personalizado
-function enviarWhatsApp(event) {
+function pedirInformes(event) {
+    // Evitamos que el enlace intente recargar la página
     event.preventDefault();
     
-    const telefono = "521234567890"; // <-- SUSTITUYE CON TU NÚMERO (Código de país + número)
-    const mensaje = encodeURIComponent("¡Hola! Me gustariapedir mas informacion sobre las invitación! ✨");
+    // Configuración de tu número y mensaje
+    const miTelefono = "527291255411"; // <-- PON AQUÍ TU NÚMERO (Código país + número)
+    const textoMensaje = "¡Hola! Vi la invitación digital y me encantó su trabajo. ✨ Me gustaría recibir más información y conocer sus paquetes y precios. ¡Muchas gracias!";
     
-    const url = `https://wa.me/${telefono}?text=${mensaje}`;
+    // Codificamos el texto para que WhatsApp lo entienda
+    const mensajeCodificado = encodeURIComponent(textoMensaje);
     
-    // Abrir en pestaña nueva
-    window.open(url, '_blank');
+    // Creamos la URL final
+    const urlWhatsapp = `https://wa.me/${miTelefono}?text=${mensajeCodificado}`;
+    
+    // Abrimos en una nueva pestaña
+    window.open(urlWhatsapp, '_blank');
 }
