@@ -12,7 +12,12 @@
     margin-bottom: 50px;
     font-size: 2.2rem;
 }
-
+.familia-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
 .familia-card {
     background: white;
     width: 320px;
@@ -27,6 +32,9 @@
     transition: transform 0.3s ease;
 }
 
+.familia-card:active {
+    transform: scale(0.98);
+}
 .label-parentesco {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
