@@ -77,8 +77,8 @@
 }
 
 .foto-novio {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     /* CAMBIO: Marco de la foto en blanco puro para resaltar sobre el Oliva */
